@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Wedding_Photography_Website/static/css/main.812c3b25.css",
-    "main.js": "/Wedding_Photography_Website/static/js/main.baf1a122.js",
+    "main.js": "/Wedding_Photography_Website/static/js/main.7ede5115.js",
     "static/css/109.41a9efc4.chunk.css": "/Wedding_Photography_Website/static/css/109.41a9efc4.chunk.css",
     "static/js/109.fe1da170.chunk.js": "/Wedding_Photography_Website/static/js/109.fe1da170.chunk.js",
     "static/css/537.3279c62e.chunk.css": "/Wedding_Photography_Website/static/css/537.3279c62e.chunk.css",
@@ -37,7 +37,7 @@
     "static/js/762.8d71dd6f.chunk.js": "/Wedding_Photography_Website/static/js/762.8d71dd6f.chunk.js",
     "index.html": "/Wedding_Photography_Website/index.html",
     "main.812c3b25.css.map": "/Wedding_Photography_Website/static/css/main.812c3b25.css.map",
-    "main.baf1a122.js.map": "/Wedding_Photography_Website/static/js/main.baf1a122.js.map",
+    "main.7ede5115.js.map": "/Wedding_Photography_Website/static/js/main.7ede5115.js.map",
     "109.41a9efc4.chunk.css.map": "/Wedding_Photography_Website/static/css/109.41a9efc4.chunk.css.map",
     "109.fe1da170.chunk.js.map": "/Wedding_Photography_Website/static/js/109.fe1da170.chunk.js.map",
     "537.3279c62e.chunk.css.map": "/Wedding_Photography_Website/static/css/537.3279c62e.chunk.css.map",
@@ -74,6 +74,6 @@
   },
   "entrypoints": [
     "static/css/main.812c3b25.css",
-    "static/js/main.baf1a122.js"
+    "static/js/main.7ede5115.js"
   ]
 }
