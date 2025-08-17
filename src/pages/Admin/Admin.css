@@ -1,0 +1,136 @@
+/* Admin.css */
+
+.admin-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.admin-container h1 {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 30px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  background-color: #e9ecef;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.tabs button:hover {
+  background-color: #495057;
+  color: #fff;
+}
+
+.tabs button.active {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.tab-content h2 {
+  text-align: center;
+  color: #495057;
+  margin-bottom: 20px;
+}
+
+.tab-content .add-item {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-content .add-item input {
+  padding: 10px;
+  width: 300px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  outline: none;
+}
+
+.tab-content .add-item input:focus {
+  border-color: #dbeafe;
+}
+
+.tab-content .add-item button {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab-content .add-item button:hover {
+  background-color: #dc3545;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+table thead {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+  background-color: #dbeafe;
+}
+
+table button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+table button:hover {
+  opacity: 0.8;
+}
+
+table button:first-child {
+  background-color: #dc3545;
+  color: #212529;
+}
+
+table button:last-child {
+  background-color: #dc3545;
+  color: #fff;
+}
