@@ -1,0 +1,119 @@
+/* General container styling */
+.about-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fffdfc;
+  color: #333;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+ 
+}
+
+
+/* Floating hearts animation */
+.floating-hearts::before {
+  content: "❤";
+  font-size: 24px;
+  color: rgba(255, 0, 102, 0.2);
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Intro Section */
+.intro {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.intro h1 {
+  font-size: 3rem;
+  color: #b43b67;
+  margin-bottom: 15px;
+}
+.intro p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Photo Collage Section */
+.photo-collage {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.photo-collage h2 {
+  font-size: 2.2rem;
+  color: #b43b67;
+  margin-bottom: 30px;
+}
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+.collage-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.collage-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Timeline Section */
+.timeline {
+  margin-bottom: 70px;
+}
+.timeline h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #b43b67;
+  margin-bottom: 25px;
+}
+.timeline ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.timeline li {
+  font-size: 1.1rem;
+  padding: 12px 0;
+  border-left: 4px solid #b43b67;
+  padding-left: 15px;
+  position: relative;
+}
+.timeline li span {
+  font-weight: bold;
+  color: #b43b67;
+  margin-right: 8px;
+}
+
+
+
+
+/* Quote Section */
+.quote {
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #444;
+  margin-top: 40px;
+}
+.signature {
+  margin-top: 10px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: #b43b67;
+}

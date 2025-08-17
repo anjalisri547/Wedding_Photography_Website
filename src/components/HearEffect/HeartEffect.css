@@ -1,0 +1,42 @@
+.heart-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180%;
+  height: 300%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.emoji-heart {
+  position: absolute;
+  font-size: 50px;
+  animation: floatUp 10s linear infinite;
+  opacity: 0.8;
+}
+
+/* Floating animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(1);
+    left: calc(100% * var(--x));
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    left: calc(100% * var(--x));
+  }
+}
+
+/* Random positions and delays */
+.emoji-heart:nth-child(1) { --x: 0.1; animation-delay: 0s; }
+.emoji-heart:nth-child(2) { --x: 0.2; animation-delay: 2s; }
+.emoji-heart:nth-child(3) { --x: 0.3; animation-delay: 4s; }
+.emoji-heart:nth-child(4) { --x: 0.4; animation-delay: 1s; }
+.emoji-heart:nth-child(5) { --x: 0.5; animation-delay: 3s; }
+.emoji-heart:nth-child(6) { --x: 0.6; animation-delay: 5s; }
+.emoji-heart:nth-child(7) { --x: 0.7; animation-delay: 2s; }
+.emoji-heart:nth-child(8) { --x: 0.8; animation-delay: 4s; }
+.emoji-heart:nth-child(9) { --x: 0.9; animation-delay: 1s; }
+.emoji-heart:nth-child(10) { --x: 0.05; animation-delay: 3s; }
+/* Add more if needed */

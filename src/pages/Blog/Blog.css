@@ -1,0 +1,235 @@
+/* BlogPage.css */
+
+/* Overall page: two columns in one row */
+.blog-page {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+  background: #f5f5f5;
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  text-decoration: none;
+}
+
+/* Sidebar: left column */
+.blog-sidebar {
+  flex: 0 0 300px; /* fixed width */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Card styling */
+.blog-sidebar .card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Card headers */
+.blog-sidebar .card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #b43b67;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* Author card */
+.author-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.author-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Sidebar lists and items */
+.featured-posts ul,
+.popular-posts ul,
+.categories ul,
+.trending ul,
+.follow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featured-posts li,
+.popular-posts li,
+.categories ul li,
+.trending ul li,
+.follow-list li {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.popular-posts li img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 0px;
+}
+
+/* Follow buttons */
+.follow-list li button {
+  padding: 4px 8px;
+  background-color: #b43b67;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+.follow-list li button:hover {
+  background-color: #942a52;
+}
+/* Categories links */
+.categories ul li a {
+  text-decoration: none; /* Remove underline */
+  color: #b43b67;       /* Pink color */
+  display: flex;
+  justify-content: space-between; /* Keep count on right */
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.categories ul li a:hover {
+  color: #942a52; /* Darker pink on hover */
+}
+
+/* Tags */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-decoration: none;
+  color: #b43b67;
+}
+.tag-list a{
+  text-decoration: none;
+  color: #b35a7b;
+}
+
+.tag-list span {
+  background-color: #f8e0e8;
+  color: #b43b67;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tag-list span:hover {
+  background-color: #b43b67;
+  color: #fff;
+}
+
+/* Newsletter */
+.newsletter input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.newsletter button {
+  width: 100%;
+  padding: 8px;
+  background-color: #b43b67;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.newsletter button:hover {
+  background-color: #942a52;
+}
+
+/* About card */
+.about p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 20px;
+  color: #b43b67;
+  margin-bottom: 10px;
+}
+
+/* Built with text */
+.built-with {
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Main blog feed: right column */
+.blog-main {
+  flex: 1; /* takes remaining space */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Each blog card */
+.blog-card {
+  display: flex;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap; /* allow image + content stack on small screens */
+}
+
+.blog-image {
+  width: 250px;
+  height: 160px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.blog-content {
+  padding: 15px 20px;
+  flex: 1;
+}
+
+.blog-content h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #b43b67;
+}
+
+.blog-meta {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.blog-content p {
+  font-size: 14px;
+  color: #555;
+}
