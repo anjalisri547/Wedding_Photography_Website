@@ -46,7 +46,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <>
       <Navbar />
       <Suspense fallback={<div style={{ textAlign: "center", marginTop: "2rem" }}>Loading...</div>}>
         <Routes>
@@ -85,7 +85,7 @@ function App() {
        
       <HeartEffect />
       <Footer />
-    </Router>
+    </>
   );
 }
 
