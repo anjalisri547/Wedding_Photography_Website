@@ -2,19 +2,18 @@ import { Helmet } from "react-helmet";
 import React, { useState, useEffect, useRef } from "react";
 
 import { db } from "../ClientLogin/firebaseConfig";
-import { collection, doc, getDoc, setDoc, updateDoc, arrayUnion, increment } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, arrayUnion, increment } from "firebase/firestore";
 import "./LivePreview.css";
 import {
-  FaFacebookF,
-  FaPinterestP,
-  FaTwitter,
-  FaWhatsapp,
   FaUser,
   FaRegCalendarAlt,
   FaEye,
-  FaQuoteLeft,
   FaThumbsUp,
 } from "react-icons/fa";
+
+// ✅ Direct import of JSON from src folder
+import videosData from "../../Data/Videos.json";
+
 
 const LivePreviews = () => {
   const [videos, setVideos] = useState([]);
@@ -23,30 +22,33 @@ const LivePreviews = () => {
   const [commentInputs, setCommentInputs] = useState({});
   const videoRefs = useRef([]);
 
+  // Load videos from imported JSON
   useEffect(() => {
-    fetch("/Videos.json")
-      .then((res) => res.json())
-      .then(async (data) => {
-        setVideos(data);
-        const initialLikes = {};
-        const initialComments = {};
-        for (let i = 0; i < data.length; i++) {
-          const videoDoc = doc(db, "videos", `video-${i}`);
-          const docSnap = await getDoc(videoDoc);
-          if (!docSnap.exists()) {
-            await setDoc(videoDoc, { likes: 0, comments: [] });
-            initialLikes[i] = 0;
-            initialComments[i] = [];
-          } else {
-            const videoData = docSnap.data();
-            initialLikes[i] = videoData.likes || 0;
-            initialComments[i] = videoData.comments || [];
-          }
+    const initializeVideos = async () => {
+      setVideos(videosData);
+
+      const initialLikes = {};
+      const initialComments = {};
+
+      for (let i = 0; i < videosData.length; i++) {
+        const videoDoc = doc(db, "videos", `video-${i}`);
+        const docSnap = await getDoc(videoDoc);
+        if (!docSnap.exists()) {
+          await setDoc(videoDoc, { likes: 0, comments: [] });
+          initialLikes[i] = 0;
+          initialComments[i] = [];
+        } else {
+          const videoData = docSnap.data();
+          initialLikes[i] = videoData.likes || 0;
+          initialComments[i] = videoData.comments || [];
         }
-        setLikes(initialLikes);
-        setComments(initialComments);
-      })
-      .catch((err) => console.error("Error loading videos.json:", err));
+      }
+
+      setLikes(initialLikes);
+      setComments(initialComments);
+    };
+
+    initializeVideos();
   }, []);
 
   const handlePlay = (index) => {
@@ -68,10 +70,12 @@ const LivePreviews = () => {
   const handleAddComment = async (index) => {
     const text = (commentInputs[index] || "").trim();
     if (!text) return;
+
     const videoDoc = doc(db, "videos", `video-${index}`);
     await updateDoc(videoDoc, {
       comments: arrayUnion(text),
     });
+
     setComments((prev) => ({
       ...prev,
       [index]: [...(prev[index] || []), text],
@@ -84,7 +88,7 @@ const LivePreviews = () => {
   }
 
   return (
-   <>
+    <>
       <Helmet>
         <title>Live Previews | AnMan Captures</title>
         <meta
@@ -92,69 +96,70 @@ const LivePreviews = () => {
           content="Watch live wedding preview videos, curated and recommended by our studio."
         />
       </Helmet>
-      
- <div className="wbp">
-      <p className="wbp-breadcrumb">
-        <a href="/">Home</a>
-        <span className="sep">›</span>
-        <span>Live Previews</span>
-      </p>
 
-      <div className="wbp-grid">
-        {videos.map((videoItem, index) => (
-          <div key={index} className="video-card">
-            <video
-              ref={(el) => (videoRefs.current[index] = el)}
-              src={videoItem.video}
-              controls
-              loop
-              onPlay={() => handlePlay(index)}
-              className="live-preview-video"
-            />
-            <div className="video-overlay">
-              <span>{videoItem.duration || "00:00"}</span>
-              {videoItem.recommended && (
-                <span className="recommended">🌟 Recommended</span>
-              )}
-            </div>
+      <div className="wbp">
+        <p className="wbp-breadcrumb">
+          <a href="/">Home</a>
+          <span className="sep">›</span>
+          <span>Live Previews</span>
+        </p>
 
-            <div className="video-content">
-              <h1 className="post-title">💍 {videoItem.title}</h1>
-              <div className="post-meta">
-                <span><FaUser /> By Studio Team |</span>
-                <span><FaRegCalendarAlt /> {videoItem.date} |</span>
-                <span><FaEye /> {videoItem.views} Views</span>
-              </div>
-              <p>{videoItem.article || "No content available"}</p>
-
-              <div className="interaction-buttons">
-                <button onClick={() => handleLike(index)} className="like-btn">
-                  <FaThumbsUp /> {likes[index] || 0}
-                </button>
+        <div className="wbp-grid">
+          {videos.map((videoItem, index) => (
+            <div key={index} className="video-card">
+              <video
+                ref={(el) => (videoRefs.current[index] = el)}
+                src={videoItem.video}
+                controls
+                muted
+                loop
+                onPlay={() => handlePlay(index)}
+                className="live-preview-video"
+              />
+              <div className="video-overlay">
+                <span>{videoItem.duration || "00:00"}</span>
+                {videoItem.recommended && (
+                  <span className="recommended">🌟 Recommended</span>
+                )}
               </div>
 
-              <div className="comments-section">
-                <h3>Comments ({comments[index]?.length || 0})</h3>
-                <div className="comment-list">
-                  {comments[index]?.map((cmt, i) => (
-                    <p key={i} className="comment">{cmt}</p>
-                  ))}
+              <div className="video-content">
+                <h1 className="post-title">💍 {videoItem.title}</h1>
+                <div className="post-meta">
+                  <span><FaUser /> By Studio Team |</span>
+                  <span><FaRegCalendarAlt /> {videoItem.date} |</span>
+                  <span><FaEye /> {videoItem.views} Views</span>
                 </div>
-                <div className="comment-input">
-                  <input
-                    type="text"
-                    placeholder="Add a comment..."
-                    value={commentInputs[index] || ""}
-                    onChange={(e) => handleCommentChange(index, e.target.value)}
-                  />
-                  <button onClick={() => handleAddComment(index)}>Post</button>
+                <p>{videoItem.article || "No content available"}</p>
+
+                <div className="interaction-buttons">
+                  <button onClick={() => handleLike(index)} className="like-btn">
+                    <FaThumbsUp /> {likes[index] || 0}
+                  </button>
+                </div>
+
+                <div className="comments-section">
+                  <h3>Comments ({comments[index]?.length || 0})</h3>
+                  <div className="comment-list">
+                    {comments[index]?.map((cmt, i) => (
+                      <p key={i} className="comment">{cmt}</p>
+                    ))}
+                  </div>
+                  <div className="comment-input">
+                    <input
+                      type="text"
+                      placeholder="Add a comment..."
+                      value={commentInputs[index] || ""}
+                      onChange={(e) => handleCommentChange(index, e.target.value)}
+                    />
+                    <button onClick={() => handleAddComment(index)}>Post</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 };
